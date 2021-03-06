@@ -47,6 +47,7 @@ def trigger_on_update_pax(doc_path, event):
 
     if "state" not in event.updateMask.fieldPaths:
         log.info("state hasn't changed, ignoring")
+        return
 
     pax_ref = db.document(doc_path)
     pax_doc = pax_ref.get()
