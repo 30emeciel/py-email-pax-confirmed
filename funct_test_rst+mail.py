@@ -6,14 +6,15 @@ from dotenv import load_dotenv
 
 def func_test_rst_mail():
     pax = Box({
-        "name": "Hello"
+        "name": "Hello",
+        "email": "tony.lbvre@gmail.com"
     })
     data = Box({
         "pax": pax,
     })
 
     html = generate_confirmed_pax_html_text(data)
-    send_mail("tony.lbvre@gmail.com", "Test Reservation Mail", html)
+    send_mail(f"{pax.name} <{pax.email}>", "Test Reservation Mail", html)
 
 
 if __name__ == "__main__":

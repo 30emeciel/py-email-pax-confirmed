@@ -1,6 +1,6 @@
 import logging
 
-from dotmap import DotMap
+from box import Box
 
 log = logging.getLogger(__name__)
 
@@ -12,7 +12,7 @@ if __name__ == "__main__":
     import main
     data = {}
     path = '/pax/auth0|5ff87d92a54dd0006f957407/requests/J1pmkMNjGEpHc5qUUQ5m'
-    context = DotMap({
+    context = Box({
         "resource": f'projects/trentiemeciel/databases/(default)/documents{path}'
     })
     main.from_firestore(data, context)

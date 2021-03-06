@@ -64,5 +64,5 @@ def trigger_on_update_pax(doc_path, event):
     html = generate_confirmed_pax_html_text(data)
     title = generate_confirmed_pax_title(data)
 
-    send_mail(pax.email, title, html)
+    send_mail(f"{pax.name} <{pax.email}>", title, html)
 
