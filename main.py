@@ -1,30 +1,13 @@
 import logging
-import os
 
-import firebase_admin
 from box import Box
-from firebase_admin import credentials
-from firebase_admin import firestore
-# Use the application default credentials
-from jinja2 import Environment, FileSystemLoader, select_autoescape
 
-from mail import send_mail
-from rst import generate_confirmed_pax_html_text, generate_confirmed_pax_title
-
-cred = credentials.ApplicationDefault()
-firebase_admin.initialize_app(cred, {
-    'projectId': "trentiemeciel",
-})
-
-logging.basicConfig(level=os.environ.get("LOGGING_LEVEL", "DEBUG"))
+from core.firestore_client import db
+from core.mail import send_mail
+from core.rst_to_html import to_html
+from core.tpl import render
 
 log = logging.getLogger(__name__)
-db = firestore.client()
-
-env = Environment(
-    loader=FileSystemLoader("res"),
-    autoescape=select_autoescape(['html', 'xml'])
-)
 
 
 def from_firestore(event, context):
@@ -61,8 +44,8 @@ def trigger_on_update_pax(doc_path, event):
     data = Box({
         "pax": pax
     })
-    html = generate_confirmed_pax_html_text(data)
-    title = generate_confirmed_pax_title(data)
+    html = to_html(render("confirmed_pax_fr.rst", data))
+    title = render("confirmed_pax_title_fr.txt", data)
 
     send_mail(f"{pax.name} <{pax.email}>", title, html)
 

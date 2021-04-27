@@ -1,20 +1,16 @@
 [tool.poetry]
-name = "trigger-on-update-pax"
+name = "email-pax-confirmed"
 version = "1.0.0"
 description = ""
 authors = ["Alyosha <alyosha@30emeciel.fr>"]
 
 [tool.poetry.dependencies]
-python = "^3.8"
-firebase-admin = "^4.4.0"
-sendgrid = "^6.6.0"
-Jinja2 = "^2.11.3"
-docutils = { path = "libs/docutils_0.17b2.tar.gz" }
-Babel = "^2.9.0"
+python = "^3.9"
 python-box = "^5.3.0"
+core = { git = "https://github.com/30emeciel/py-core.git", branch="v2"}
 
 [tool.poetry.dev-dependencies]
-python-dotenv = "^0.15.0"
+python-dotenv = "^0.17.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
