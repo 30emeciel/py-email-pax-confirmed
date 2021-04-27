@@ -62,7 +62,7 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 
 [[package]]
 name = "core"
-version = "v2"
+version = "3"
 description = ""
 category = "main"
 optional = false
@@ -81,8 +81,8 @@ slack-sdk = "^3.5.0"
 [package.source]
 type = "git"
 url = "https://github.com/30emeciel/py-core.git"
-reference = "v2"
-resolved_reference = "eace471f703d5ad7fee370b920b99d6243db0bdb"
+reference = "3"
+resolved_reference = "575df40337550799b9f681fac67ae8dd00b1386c"
 
 [[package]]
 name = "docutils"
@@ -535,7 +535,7 @@ brotli = ["brotlipy (>=0.6.0)"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "eb396ae14508edba02e647915837a29a35247c26a3e76b9e3ff6f0bd0b7e2dea"
+content-hash = "5da815002d502184e0ad5de9920471cb7570b705b55974f3973acc30d1b6eaeb"
 
 [metadata.files]
 babel = [
