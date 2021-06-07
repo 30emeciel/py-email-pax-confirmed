@@ -1,7 +1,6 @@
 import logging
 
 from box import Box
-
 from core.firestore_client import db
 from core.mail import send_mail
 from core.rst_to_html import to_html
@@ -39,6 +38,10 @@ def trigger_on_update_pax(doc_path, event):
     pax = Box(pax_doc.to_dict())
     if pax.state != "CONFIRMED":
         log.info(f"pax 'state' != CONFIRMED, ignoring")
+        return
+
+    if "email" not in pax:
+        log.warning(f"No email field. ignoring pax sub={pax.sub} name={pax.name}...")
         return
 
     data = Box({
