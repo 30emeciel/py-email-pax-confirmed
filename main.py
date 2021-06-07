@@ -1,12 +1,15 @@
 import logging
 
 from box import Box
-from core.firestore_client import db
-from core.mail import send_mail
+from core import firestore_client
+from core.mailer import Mailer
 from core.rst_to_html import to_html
 from core.tpl import render
 
 log = logging.getLogger(__name__)
+
+db = firestore_client.db()
+mailer = Mailer()
 
 
 def from_firestore(event, context):
@@ -50,5 +53,5 @@ def trigger_on_update_pax(doc_path, event):
     html = to_html(render("confirmed_pax_fr.rst", data))
     title = render("confirmed_pax_title_fr.txt", data)
 
-    send_mail(f"{pax.name} <{pax.email}>", title, html)
+    mailer.send_mail(pax.name, pax.email, title, html)
 
