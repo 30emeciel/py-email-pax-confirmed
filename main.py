@@ -44,7 +44,7 @@ def trigger_on_update_pax(doc_path, event):
         return
 
     if "email" not in pax:
-        log.warning(f"No email field. ignoring pax sub={pax.sub} name={pax.name}...")
+        log.warning(f"No email field. ignoring pax with id {pax_ref.id} name={pax.name}...")
         return
 
     data = Box({
